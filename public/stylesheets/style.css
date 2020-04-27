@@ -119,6 +119,7 @@ input {
     z-index: 5; } }
 
 .overlay-container {
+  background-image: url("/images/ponderingcat.jpg");
   position: absolute;
   top: 0;
   left: 50%;
@@ -132,9 +133,7 @@ input {
   transform: translateX(-100%); }
 
 .overlay {
-  background: #FF416C;
-  background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-  background: linear-gradient(to right, #FF4B2B, #FF416C);
+  background-image: url("/images/ponderingcat.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
@@ -188,26 +187,5 @@ input {
   margin: 0 5px;
   height: 40px;
   width: 40px; }
-
-footer {
-  background-color: #222;
-  color: #fff;
-  font-size: 14px;
-  bottom: 0;
-  position: fixed;
-  left: 0;
-  right: 0;
-  text-align: center;
-  z-index: 999; }
-
-footer p {
-  margin: 10px 0; }
-
-footer i {
-  color: red; }
-
-footer a {
-  color: #3c97bf;
-  text-decoration: none; }
 
 /*# sourceMappingURL=style.css.map */

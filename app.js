@@ -17,7 +17,7 @@ const User = require('./models/User.model')
 
 
 mongoose
-  .connect('mongodb://localhost/looking-for-cats', {useNewUrlParser: true})
+  .connect('mongodb://localhost/looking-for-cats', {useNewUrlParser: true, useUnifiedTopology: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -118,3 +118,4 @@ app.use('/', index);
 const usersRoutes = require('./routes/users.routes');
 app.use('/', usersRoutes);
 module.exports = app;
+app.listen(process.env.PORT, function () {});

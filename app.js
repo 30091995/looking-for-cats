@@ -118,4 +118,3 @@ app.use('/', index);
 const usersRoutes = require('./routes/users.routes');
 app.use('/', usersRoutes);
 module.exports = app;
-app.listen(process.env.PORT, function () {});

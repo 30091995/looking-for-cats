@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
-
-a {
-  color: #00B7FF; }
-=======
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
 * {
   box-sizing: border-box; }
@@ -195,6 +187,5 @@ input {
   margin: 0 5px;
   height: 40px;
   width: 40px; }
->>>>>>> 28b8cac28ed2fee867d9eba9cafd7399f6b88a78
 
 /*# sourceMappingURL=style.css.map */

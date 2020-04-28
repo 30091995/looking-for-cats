@@ -48,8 +48,8 @@ router.get('/login', (req, res) => {
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/private-page', // pick up the redirectBackTo parameter and after login redirect the user there. ( default / )
   failureRedirect: '/login',
-  // failureFlash: true,
-  // passReqToCallback: true
+  failureFlash: true,
+  passReqToCallback: true
 }))
 
 module.exports = router;

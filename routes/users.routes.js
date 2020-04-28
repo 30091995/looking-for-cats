@@ -18,11 +18,21 @@ router.get('/private-page', ensureLogin.ensureLoggedIn(), (req, res) => {
   res.render('users/private', { user: req.user });
 });
 
-//GET : This one render the form to add the data for sign up !
+//GET : This one render the form to add the data for sign up and log in !
 
-router.get('/signup', (req, res) => {
-  res.render('users/signup')
+router.get('/signin', (req, res) => {
+  res.render('users/signin')
 })
+
+
+//POST : This one checks if the user really exists in the DATABASE
+
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/private-page', // pick up the redirectBackTo parameter and after login redirect the user there. ( default / )
+  failureRedirect: '/login',
+  //failureFlash: true,
+  //passReqToCallback: true
+}))
 
 
 //POST : This one add the data taken from the form to the DATABASE 
@@ -37,19 +47,6 @@ router.post('/signup', (req, res) => {
 
 })
 
-//GET : This one render the form to log in 
 
-router.get('/login', (req, res) => {
-  res.render('users/login')
-})
-
-//POST : This one checks if the user really exists in the DATABASE
-
-router.post('/login', passport.authenticate('local', {
-  successRedirect: '/private-page', // pick up the redirectBackTo parameter and after login redirect the user there. ( default / )
-  failureRedirect: '/login',
-  failureFlash: true,
-  passReqToCallback: true
-}))
 
 module.exports = router;

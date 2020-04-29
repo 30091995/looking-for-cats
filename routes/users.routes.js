@@ -47,6 +47,22 @@ router.post('/signup', (req, res) => {
 
 })
 
-
+//  GET: Logging in w google
+router.get(
+  "/users/google",
+  passport.authenticate("google", {
+    scope: [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email"
+    ]
+  })
+);
+router.get(
+  "/users/google/callback",
+  passport.authenticate("google", {
+    successRedirect: "/private-page",
+    failureRedirect: "/signin" // here you would redirect to the login page using traditional login approach
+  })
+);
 
 module.exports = router;

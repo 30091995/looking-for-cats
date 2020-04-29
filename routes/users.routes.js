@@ -29,7 +29,7 @@ router.get('/signin', (req, res) => {
 
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/private-page', // pick up the redirectBackTo parameter and after login redirect the user there. ( default / )
-  failureRedirect: '/login',
+  failureRedirect: '/signin',
   //failureFlash: true,
   //passReqToCallback: true
 }))
@@ -40,9 +40,9 @@ router.post('/login', passport.authenticate('local', {
 router.post('/signup', (req, res) => {
   const salt = bcrypt.genSaltSync(bcryptSalt);
   const hashPass = bcrypt.hashSync(req.body.password, salt);
-  let user = new User({ username: req.body.username , password : hashPass})
+  let user = new User({ username: req.body.username , password : hashPass , email : req.body.email})
   user.save().then(() => {
-    res.send('You signed up very compliment')
+    res.redirect('/signin')
   })
 
 })

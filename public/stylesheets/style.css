@@ -2,15 +2,25 @@
 * {
   box-sizing: border-box; }
 
+.navbar {
+  background-color: rgba(128, 128, 128, 0.835);
+  padding: 50px;
+  border-radius: 10px; }
+
+.navbar a {
+  padding: 20px; }
+
 body {
   background: #f6f5f7;
+  font-family: 'Montserrat', sans-serif; }
+
+.signin {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  font-family: 'Montserrat', sans-serif;
-  height: 100vh;
-  margin: -20px 0 50px; }
+  margin: -20px 0 50px;
+  height: 100vh; }
 
 h1 {
   font-weight: bold;
@@ -187,5 +197,39 @@ input {
   margin: 0 5px;
   height: 40px;
   width: 40px; }
+
+.block {
+  padding: 200px 60px 100px 60px;
+  text-align: center; }
+
+.boxcollection {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; }
+
+#title {
+  background-image: url("/images/relaxing cat.jpg");
+  color: white;
+  margin: 50px;
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  background-size: 1400px 1000px;
+  background-attachment: fixed; }
+
+.infobox {
+  margin: 40px 50px 40px 50px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 200px;
+  min-height: 180px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  width: 768px;
+  flex-wrap: nowrap;
+  padding: 20px; }
+
+.number {
+  margin-top: 20px; }
 
 /*# sourceMappingURL=style.css.map */

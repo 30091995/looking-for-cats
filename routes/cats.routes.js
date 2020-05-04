@@ -7,6 +7,17 @@ const api_key = "052a7a0d-fec7-4c35-a488-83eaa0b03072"
 
 const ensureLogin = require('connect-ensure-login');
 
+
+router.get('/filteringcats/:id', ensureLogin.ensureLoggedIn(), (req, res) => {
+  axios.get('https://api.thecatapi.com/v1/images/search?breed_ids=' + req.params.id).then((cat) => {
+    //console.log(cat.data[0].url)
+    res.render('cats/catdetails', {cat : cat.data[0].breeds[0] , pic : cat.data[0]})
+  })
+
+
+  console.log('CIAAAAAAOOOOOOOOOOOOOOO')
+})
+
 router.get('/filteringcats', ensureLogin.ensureLoggedIn(), (req, res) => {
     res.render('cats/filtering')
 })
@@ -20,10 +31,12 @@ router.post('/filteringcats', ensureLogin.ensureLoggedIn(), (req, res) => {
       filteredCats.push(cat)
     }
     });
-    console.log(filteredCats)
+    //console.log(filteredCats)
     res.render('cats/showcats', {cats :filteredCats})
   })
 })
+
+
 
 
 

@@ -13,8 +13,8 @@
     <div class="row row-cols-4">
       {{#each cats}}
        <div class="col">
-        <h4>{{this.name}}</h4>
-        {{this.origin}}
+        <h5>{{this.name}}</h5>
+        <a href="filteringcats/{{this.id}}">See more specifics</a>
        </div>
       {{/each}}
     </div>

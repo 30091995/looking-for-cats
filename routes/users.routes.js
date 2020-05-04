@@ -60,7 +60,7 @@ router.get(
 router.get(
   "/users/google/callback",
   passport.authenticate("google", {
-    successRedirect: "/private-page",
+    successRedirect: "/private/filteringcats",
     failureRedirect: "/signin" // here you would redirect to the login page using traditional login approach
   })
 );

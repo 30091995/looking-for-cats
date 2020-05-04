@@ -146,4 +146,9 @@ app.use('/', index);
 
 const usersRoutes = require('./routes/users.routes');
 app.use('/', usersRoutes);
+
+const catsRoutes = require('./routes/cats.routes')
+app.use('/private',catsRoutes)
+
+
 module.exports = app;

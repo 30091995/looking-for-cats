@@ -28,7 +28,7 @@ router.get('/signin', (req, res) => {
 //POST : This one checks if the user really exists in the DATABASE
 
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/private-page', // pick up the redirectBackTo parameter and after login redirect the user there. ( default / )
+  successRedirect: '/private/filteringcats', // pick up the redirectBackTo parameter and after login redirect the user there. ( default / )
   failureRedirect: '/signin',
   //failureFlash: true,
   //passReqToCallback: true
@@ -64,5 +64,7 @@ router.get(
     failureRedirect: "/signin" // here you would redirect to the login page using traditional login approach
   })
 );
+
+
 
 module.exports = router;

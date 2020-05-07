@@ -5,7 +5,8 @@ const userSchema = new Schema({
   username: String,
   password: String,
   email: String,
-  googleID: String
+  googleID: String,
+  favourite_cats: []
 }, {
   timestamps: true
 });

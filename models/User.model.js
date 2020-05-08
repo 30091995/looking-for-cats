@@ -5,7 +5,10 @@ const userSchema = new Schema({
   username: String,
   password: String,
   email: String,
-  googleID: String
+  googleID: String,
+  slackID: String,
+  verifiedEmail: { type: Boolean, default: false },
+  token: String
 }, {
   timestamps: true
 });

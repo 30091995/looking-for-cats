@@ -21,6 +21,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_SECRET
 });
 
+
 var storage = cloudinaryStorage({
   cloudinary: cloudinary,
   folder: 'my-cats', // The name of the folder in cloudinary
@@ -31,7 +32,6 @@ var storage = cloudinaryStorage({
 });
 
 const uploadCloud = multer({ storage: storage });
-
 
 router.post("/removefavourite/:id", ensureLogin.ensureLoggedIn(), (req, res) => {
   User.update({ _id: req.user.id }, { $pull: { favourite_cats: req.params.id } })

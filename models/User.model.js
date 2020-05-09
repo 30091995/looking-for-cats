@@ -6,6 +6,9 @@ const userSchema = new Schema({
   password: String,
   email: String,
   googleID: String,
+  slackID: String,
+  verifiedEmail: { type: Boolean, default: false },
+  token: String,
   favourite_cats: []
 }, {
   timestamps: true

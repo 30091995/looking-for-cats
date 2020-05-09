@@ -9,5 +9,7 @@ const catSchema = {
     owner: { type: Schema.Types.ObjectId, ref: 'User' }
 }
 
+
 const Cat = mongoose.model('Cat', catSchema)
+
 module.exports = Cat

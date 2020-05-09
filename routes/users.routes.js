@@ -34,17 +34,87 @@ router.post('/login', passport.authenticate('local', {
   //passReqToCallback: true
 }))
 
+const nodemailer = require('nodemailer')
+
+// SMTP 
+let transporter = nodemailer.createTransport({
+  service: 'Gmail',
+  auth: {
+    user: 'catvarificationapp@gmail.com',
+    pass: 'myAwesomepassword22',
+  }
+});
+
+
+
 
 //POST : This one add the data taken from the form to the DATABASE 
 
 router.post('/signup', (req, res) => {
-  const salt = bcrypt.genSaltSync(bcryptSalt);
-  const hashPass = bcrypt.hashSync(req.body.password, salt);
-  let user = new User({ username: req.body.username , password : hashPass , email : req.body.email})
-  user.save().then(() => {
-    res.redirect('/signin')
-  })
+  const email = req.body.email
+  const password = req.body.password
 
+  // creates a 4 digit random token
+  const tokenArr = Array.from({ length: 6 }, () => Math.floor(Math.random() * 10))
+  const token = tokenArr.join(''); // 6 digits
+
+  transporter.sendMail({
+    from: '"My Awesome Project " <myawesome@project.com>',
+    to: email,
+    subject: 'Subject',
+    text: `Hey, thanks for joining the cat app! Click the link to confirm your mail adress: http://localhost:3000/verify-email-link/${token}`,
+    html: `Hey, thanks for joining the cat app! Click the link to confirm your mail adress: http://localhost:3000/verify-email-link/${token}`
+
+  })
+    .then(() => {
+      const salt = bcrypt.genSaltSync(bcryptSalt);
+      const hashPass = bcrypt.hashSync(req.body.password, salt);
+
+
+      let user = new User({ username: req.body.username, password: hashPass, email: req.body.email, token: token })
+      user.save().then(() => {
+        req.logIn(user, () => { res.redirect('/private/filteringcats') })
+
+      })
+
+    })
+})
+
+
+
+router.get(
+  "/users/google/callback",
+  passport.authenticate("google", {
+    successRedirect: "/private/filteringcats",
+    failureRedirect: "/signin" // here you would redirect to the login page using traditional login approach
+  })
+);
+
+
+
+router.get('/verify-email-link/:token', ensureLogin.ensureLoggedIn(), (req, res) => {
+  if (req.user.token === req.params.token) {
+    req.user.verifiedEmail = true
+    req.user.save().then(() => {
+      // res.redirect to an entire page later
+      res.send('successfully verified your email')
+    })
+  }
+})
+
+router.get('/verify-email', (req, res) => {
+  res.render('auth/verify')
+})
+
+router.post('/verify-email', (req, res) => {
+  console.log(req.user)
+  if (req.user.token === req.body.token) {
+    req.user.verifiedEmail = true
+    req.user.save().then(() => {
+      // res.redirect to an entire page later
+      res.send('successfully verified your email')
+    })
+  }
 })
 
 //  GET: Logging in w google
@@ -55,13 +125,6 @@ router.get(
       "https://www.googleapis.com/auth/userinfo.profile",
       "https://www.googleapis.com/auth/userinfo.email"
     ]
-  })
-);
-router.get(
-  "/users/google/callback",
-  passport.authenticate("google", {
-    successRedirect: "/private/filteringcats",
-    failureRedirect: "/signin" // here you would redirect to the login page using traditional login approach
   })
 );
 

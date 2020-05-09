@@ -15,7 +15,7 @@ const passport = require('passport')
 const ensureLogin = require('connect-ensure-login');
 
 router.get('/private-page', ensureLogin.ensureLoggedIn(), (req, res) => {
-  res.render('users/private', { user: req.user });
+  res.render('users/', { user: req.user });
 });
 
 //GET : This one render the form to add the data for sign up and log in !
@@ -59,7 +59,7 @@ router.post('/signup', (req, res) => {
   const token = tokenArr.join(''); // 6 digits
 
   transporter.sendMail({
-    from: '"My Awesome Project " <myawesome@project.com>',
+    from: '"The cat app " <myawesome@project.com>',
     to: email,
     subject: 'Subject',
     text: `Hey, thanks for joining the cat app! Click the link to confirm your mail adress: http://localhost:3000/verify-email-link/${token}`,
@@ -92,13 +92,17 @@ router.get(
 
 
 
-router.get('/verify-email-link/:token', ensureLogin.ensureLoggedIn(), (req, res) => {
+router.get('/verify-email-link/:token', ensureLogin.ensureLoggedIn("/signin"), (req, res) => {
+
   if (req.user.token === req.params.token) {
     req.user.verifiedEmail = true
     req.user.save().then(() => {
       // res.redirect to an entire page later
       res.send('successfully verified your email')
     })
+  }
+  else{
+    res.send("something went wrong")
   }
 })
 

@@ -21,7 +21,6 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_SECRET
 });
 
-
 var storage = cloudinaryStorage({
   cloudinary: cloudinary,
   folder: 'my-cats', // The name of the folder in cloudinary
@@ -32,6 +31,7 @@ var storage = cloudinaryStorage({
 });
 
 const uploadCloud = multer({ storage: storage });
+
 
 router.post("/removefavourite/:id", ensureLogin.ensureLoggedIn(), (req, res) => {
   User.update({ _id: req.user.id }, { $pull: { favourite_cats: req.params.id } })
@@ -50,9 +50,8 @@ router.get('/viewprofile', ensureLogin.ensureLoggedIn(), (req, res) => {
 
   Promise.all([dbCatPromise, ...promises]).then((fetchedCats) => {
     let myCats = fetchedCats.shift()
-    console.log("myCats", myCats)
     let cats = fetchedCats.map((c) => c.data)
-    console.log("cats", cats)
+    //console.log(myCats)
     res.render('profiles/viewprofile', { myCats, cats })
   })
 
@@ -61,7 +60,8 @@ router.get('/viewprofile', ensureLogin.ensureLoggedIn(), (req, res) => {
 
 router.post('/addcat', ensureLogin.ensureLoggedIn() ,uploadCloud.single('my-photo'), (req, res) => {
   const imageURL = req.file.url;
-  Cat.create({ name: req.body.name, description: req.body.description, imageURL: imageURL, owner: req.user.id }).then(() => {
+  console.log("this is the url"+imageURL)
+  Cat.create({ name: req.body.name, description: req.body.description, imgUrl: imageURL, owner: req.user.id }).then(() => {
     res.redirect('/profile/viewprofile')
   })
 })

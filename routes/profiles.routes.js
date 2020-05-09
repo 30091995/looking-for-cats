@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const axios = require ('axios');
+const cloudinary = require('cloudinary');
+const cloudinaryStorage = require('multer-storage-cloudinary');
+// package to allow <input type="file"> in forms
+const multer = require('multer');
 // Require user model
 
 const User = require('../models/User.model')
@@ -8,6 +12,13 @@ const User = require('../models/User.model')
 //Middleware for authentication 
 
 const ensureLogin = require('connect-ensure-login');
+
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_KEY,
+  api_secret: process.env.CLOUDINARY_SECRET
+});
 
 
 router.post("/removefavourite/:id", ensureLogin.ensureLoggedIn(), (req, res) => {

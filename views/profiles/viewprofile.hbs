@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>
+    Welcome to your Profile
+  </h2>
+
+  <h4>
+    These are your favourite cats:
+  </h4>
+  {{#each cats}}
+  <div>
+    <h1>{{this.0.breeds.0.name}}</h1>
+    <br>
+    <img src="{{this.0.url}}" width="300" height="300">
+    <form action="/profile/removefavourite/{{this.0.breeds.0.id}}" method="POST">
+    <button type="submit">Remove from favourite</button>
+    </form>
+  </div>
+  {{/each}}
+</body>
+</html>

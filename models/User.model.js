@@ -8,7 +8,8 @@ const userSchema = new Schema({
   googleID: String,
   slackID: String,
   verifiedEmail: { type: Boolean, default: false },
-  token: String
+  token: String,
+  favourite_cats: []
 }, {
   timestamps: true
 });

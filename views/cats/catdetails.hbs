@@ -19,6 +19,9 @@
     <li>Rare : {{cat.rare}}</li>
   </ul>
   <img src="{{pic.url}}" height="300" width="400">
+  <form action="/private/filteringcats/{{cat.id}}" method="POST">
+  <button type="submit">Add to your favorite cat</button>
+  </form>
   </div>
 </body>
 </html>

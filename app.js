@@ -150,5 +150,8 @@ app.use('/', usersRoutes);
 const catsRoutes = require('./routes/cats.routes')
 app.use('/private',catsRoutes)
 
+const profilesRoutes = require('./routes/profiles.routes')
+app.use('/profile', profilesRoutes)
+
 
 module.exports = app;

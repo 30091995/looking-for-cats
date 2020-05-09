@@ -10,9 +10,16 @@
     Welcome to your Profile
   </h2>
 
+
+
+
+
+  <section>
+
   <h4>
     These are your favourite cats:
   </h4>
+
   {{#each cats}}
   <div>
     <h1>{{this.0.breeds.0.name}}</h1>
@@ -23,5 +30,35 @@
     </form>
   </div>
   {{/each}}
+  </section>
+
+
+
+
+
+  <section>
+    <h4>List of your own cats:</h4>
+    {{#each myCats}}
+    <div>
+      <h1>{{this.name}}</h1>
+      <br>
+      <p>{{this.description}}</p>
+      <br>
+      <img src="{{this.imgURL}}" alt="cat-picture">
+      <form action="/profile/removemycat/{{this.id}}" method="POST">
+      <button type="submit">Remove from your own collection</button>
+    </div>
+    {{/each}}
+  </section>
+
+  <section>
+    <h4>Do you have cats and you want to tell us more about them?</h4>
+    <form action="/profile/addcat" method="POST" enctype="multipart/form-data">
+    <input type="text" name="name" placeholder="Name of your cat">
+    <input type="text" name="description" placeholder="Description of your cat" width="100" height="70">
+    <input type="file" name="my-photo" id="">
+    <button type="submit">Upload your cat</button>
+    </form>
+  </section>
 </body>
 </html>

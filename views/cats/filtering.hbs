@@ -3,21 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="/stylesheets/style.css" />
   <title>Document</title>
 </head>
 <body>
   
-<div class="navbar">
-<a href="/logout">Log Out</a>
-<a href="/profile/viewprofile">My profile</a>
-</div>
 
 
 <h3>Tell us more about some specifics your cat should have</h3>
 
 <form method="POST" action="/private/filteringcats">
-  <label for="adaptability">Adaptability :</label>
+  <!-- <label for="adaptability">Adaptability :</label>
   <select id="adaptability" name="adaptability">
     <option value="1">1</option>
     <option value="2">2</option>
@@ -61,6 +58,82 @@
     <option value="5">5</option>
   </select>
 
+  <button type="submit"> Look for your ideal cat</button> -->
+
+
+
+
+  <div class="input-group mb-3 w-50">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect01">Adaptability</label>
+  </div>
+  <select class="custom-select" id="inputGroupSelect01" name="adaptability">
+    <option selected>Choose...</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+</div>
+
+
+  <div class="input-group mb-3 w-50">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect02">Affection Level</label>
+  </div>
+  <select class="custom-select" id="inputGroupSelect02" name="affectionLevel">
+    <option selected>Choose...</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+</div>
+
+  <div class="input-group mb-3 w-50">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect03">Dog Friendly</label>
+  </div>
+  <select class="custom-select" id="inputGroupSelect03" name="dogFriendly">
+    <option selected>Choose...</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+</div>
+
+  <div class="input-group mb-3 w-50">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect04">Intelligence</label>
+  </div>
+  <select class="custom-select" id="inputGroupSelect04" name="intelligence">
+    <option selected>Choose...</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+</div>
+
+  <div class="input-group mb-3 w-50">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect05">Rare</label>
+  </div>
+  <select class="custom-select" id="inputGroupSelect05" name="rare">
+    <option selected>Choose...</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+</div>
+  
   <button type="submit"> Look for your ideal cat</button>
 
   </form>

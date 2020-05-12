@@ -1,127 +1,83 @@
 
-<h3>Tell us more about some specifics your cat should have</h3>
+<h1>Cat Search Engine</h1>
+<h3>Refine your cat's "features"</h3>
+<p>Rate the following proprties a cat can have from 1 to 5. 1 meaning not at all and 5 meaning very intense.</p>
 
+
+<div class="boxcollection">
+  <div class="top">
 <form method="POST" action="/private/filteringcats">
-  <!-- <label for="adaptability">Adaptability :</label>
-  <select id="adaptability" name="adaptability">
+
+
+<div class="infobox">
+  <img src="/images/cat_adaptability.jpg" alt="cat adapting">
+  <p>How do you want your cat to adapt to a new environment? Rather shy and safe or interested and possibly bitchy?</p>
+<select class="select-css" name="adaptability">
+  <option selected>Adaptability</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
     <option value="4">4</option>
     <option value="5">5</option>
-  </select>
-  <label for="affectionLevel">Affection Level :</label>
-    <select id="affectionLevel" name="affectionLevel">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-  </select>
-  <label for="dogFriendly">Dog Friendly :</label>
-    <select id="dogFriendly" name="dogFriendly">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-  </select>
-  
-  <label for="intelligence">Intelligence :</label>
-    <select id="intelligence" name="intelligence">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-  </select>
-
-
-  <label for="rare">Rare :</label>
-    <select id="rare" name="rare">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-  </select>
-
-  <button type="submit"> Look for your ideal cat</button> -->
-
-
-
-
-  <div class="input-group mb-3 w-50">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Adaptability</label>
-  </div>
-  <select class="custom-select" id="inputGroupSelect01" name="adaptability">
-    <option selected>Choose...</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-  </select>
+</select>
 </div>
 
-
-  <div class="input-group mb-3 w-50">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect02">Affection Level</label>
-  </div>
-  <select class="custom-select" id="inputGroupSelect02" name="affectionLevel">
-    <option selected>Choose...</option>
+<div class="infobox">
+  <img src="/images/cat_affection.jpg" alt="cat affected">
+  <p>Some cats show affection through their eyes, hanging around their owners or by just looking for closer human contact. (5) But beware: an affectionat cat also needs a lot more attention.</p>
+<select class="select-css" name="affectionLevel">
+  <option selected>Affection Level</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
     <option value="4">4</option>
     <option value="5">5</option>
-  </select>
+</select>
 </div>
 
-  <div class="input-group mb-3 w-50">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect03">Dog Friendly</label>
-  </div>
-  <select class="custom-select" id="inputGroupSelect03" name="dogFriendly">
-    <option selected>Choose...</option>
+<div class="infobox">
+  <img src="/images/catfightsdog.jpg" alt="cat kicks dog">
+<p>Already have a dog or friends that bring them over a lot? Consider this option to avoid more drama in your house.</p>
+<select class="select-css" name="dogFriendly">
+  <option selected>Dog friendly</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
     <option value="4">4</option>
     <option value="5">5</option>
-  </select>
+</select>
 </div>
 
-  <div class="input-group mb-3 w-50">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect04">Intelligence</label>
-  </div>
-  <select class="custom-select" id="inputGroupSelect04" name="intelligence">
-    <option selected>Choose...</option>
+<div class="infobox">
+  <img src="/images/smartcat.png" alt="cat reading book">
+  <p>Cats are believed to be a lot smarter than dogs. But can you teach it tricks or make it help you around the house?</p>
+<select class="select-css" name="intelligence">
+  <option selected>Intelligence</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
     <option value="4">4</option>
     <option value="5">5</option>
-  </select>
+</select>
 </div>
 
-  <div class="input-group mb-3 w-50">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect05">Rare</label>
-  </div>
-  <select class="custom-select" id="inputGroupSelect05" name="rare">
-    <option selected>Choose...</option>
+<div class="infobox">
+  <img src="/images/rarecat.png" alt="rare unicorn cat">
+  <p>What else to add? Keep in mind though that rare cats are more expensive and usually come from breeders that only feed them a certain diet.</p>
+<select class="select-css" name="rare">
+  <option selected>Rarity</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
     <option value="4">4</option>
     <option value="5">5</option>
-  </select>
+</select>
+
+
 </div>
-  
+<br><br>
+  </div>
+  <div class="bottom">
   <button type="submit"> Look for your ideal cat</button>
-
+</div>
   </form>

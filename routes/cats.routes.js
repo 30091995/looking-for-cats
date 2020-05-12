@@ -11,7 +11,7 @@ const ensureLogin = require('connect-ensure-login');
 
 router.get('/filteringcats/:id', ensureLogin.ensureLoggedIn(), (req, res) => {
   axios.get('https://api.thecatapi.com/v1/images/search?breed_ids=' + req.params.id).then((cat) => {
-    res.render('cats/catdetails', {cat : cat.data[0].breeds[0] , pic : cat.data[0]})
+    res.render('cats/catdetails', {cat : cat.data[0].breeds[0] , pic : cat.data[0] , loggedIn: req.sessionID })
   })
 })
 
@@ -29,7 +29,7 @@ router.post('/filteringcats/:id', ensureLogin.ensureLoggedIn(), (req, res) => {
 
 
 router.get('/filteringcats', ensureLogin.ensureLoggedIn(), (req, res) => {
-    res.render('cats/filtering')
+    res.render('cats/filtering', {loggedIn: req.sessionID})
 })
 
 
@@ -43,7 +43,7 @@ router.post('/filteringcats', ensureLogin.ensureLoggedIn(), (req, res) => {
       filteredCats.push(cat)
     }
     });
-    res.render('cats/showcats', {cats :filteredCats})
+    res.render('cats/showcats', {cats :filteredCats, loggedIn: req.sessionID})
   })
 })
 

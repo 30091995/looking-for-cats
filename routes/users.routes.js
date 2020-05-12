@@ -98,7 +98,7 @@ router.get('/verify-email-link/:token', ensureLogin.ensureLoggedIn("/signin"), (
     req.user.verifiedEmail = true
     req.user.save().then(() => {
       // res.redirect to an entire page later
-      res.send('successfully verified your email')
+      res.redirect('/profile/viewprofile')
     })
   }
   else{
@@ -106,7 +106,7 @@ router.get('/verify-email-link/:token', ensureLogin.ensureLoggedIn("/signin"), (
   }
 })
 
-router.get('/verify-email', (req, res) => {
+/*router.get('/verify-email', (req, res) => {
   res.render('auth/verify')
 })
 
@@ -119,7 +119,7 @@ router.post('/verify-email', (req, res) => {
       res.send('successfully verified your email')
     })
   }
-})
+}) */
 
 //  GET: Logging in w google
 router.get(

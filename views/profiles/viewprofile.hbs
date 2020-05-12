@@ -12,6 +12,8 @@
   <a href="/private/filteringcats">Search cats</a>
   </div>
   <h2>
+
+
     Welcome to your Profile
   </h2>
 
@@ -65,5 +67,11 @@
     <button type="submit">Upload your cat</button>
     </form>
   </section>
+
+ {{#if this.emailVarification}} 
+{{else}}
+   Please make sure to varify your email with the link we sent you. 
+  {{/if}}
+  
 </body>
 </html>

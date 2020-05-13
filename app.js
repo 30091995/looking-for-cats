@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const express      = require('express');
 const favicon      = require('serve-favicon');
 const hbs          = require('hbs');
+const flash = require('connect-flash');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
@@ -15,6 +16,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const MongoStore = require("connect-mongo")(session);
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const User = require('./models/User.model')
+
 
 
 mongoose
@@ -30,6 +32,10 @@ const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
 
 const app = express();
+
+
+app.use(flash());
+
 
 // express-session configuration 
 app.use(session({
@@ -62,7 +68,7 @@ passport.deserializeUser((id, callback) => {
 
 
 passport.use(
-  new LocalStrategy({ usernameField: 'username' }, (username, password, callback) => {
+  new LocalStrategy({ usernameField: 'username', passReqToCallback : true }, (req ,username, password, callback) => {
     User.findOne({ username })
       .then(user => {
         if (!user) {

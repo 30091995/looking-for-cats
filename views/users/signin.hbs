@@ -1,14 +1,16 @@
-
+              {{#if message}}
+                    <div>{{ message }}</div>
+                {{/if}}
     <div class="signin">
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
 		<form action="/signup" method="POST">
 			<h1>Sign up</h1>
-			<div class="social-container">
+			{{!--<div class="social-container">
 				<a href="#" class="social"><i class="github"> <img src="/images/google logo.png" width="50px" height="50px" alt="google logo"></i></a>
-			</div>
+			</div> --}}
      
-			<span>or use your email for registration</span>
+			<span>Use your email for registration</span>
 			<input type="text" placeholder="Username" name="username" />
 			<input type="email" placeholder="E-mail" name="email" />
 			<input type="password" placeholder="Password" name="password" />
@@ -42,6 +44,7 @@
 
       
 				<button class="ghost" id="signUp">Sign Up</button>
+
 			</div>
 		</div>
 	</div>

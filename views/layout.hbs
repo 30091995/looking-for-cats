@@ -5,12 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>The cat app</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <link rel="stylesheet" href="/stylesheets/style.css" />
+
+
+  {{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> --}}
+    <script src="https://kit.fontawesome.com/cde0878fc8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
+  <div class="navbar">
 
-
+   <a href="/">Home</a>
+  <a href="/profile/viewprofile">My Profile</a>
+  <a href="/private/filteringcats">Cat Search Engine</a>
+  {{#if this.loggedIn}} 
+<a href="/logout">Logout</a>
+{{else}}
+<a href="/signin">Login/Sign up</a>
+  {{/if}}</a>
+</div>
 
   {{{body}}}
 

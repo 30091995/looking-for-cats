@@ -21,17 +21,17 @@ router.get('/private-page', ensureLogin.ensureLoggedIn(), (req, res) => {
 //GET : This one render the form to add the data for sign up and log in !
 
 router.get('/signin', (req, res) => {
-  res.render('users/signin', {loggedIn: req.sessionID})
+  res.render('users/signin', {loggedIn: req.sessionID})//, flashMessages: req.flash('error')})
 })
 
 
 //POST : This one checks if the user really exists in the DATABASE
 
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/private/filteringcats', // pick up the redirectBackTo parameter and after login redirect the user there. ( default / )
+  successRedirect: '/private/filteringcats', 
   failureRedirect: '/signin',
-  //failureFlash: true,
-  //passReqToCallback: true
+  failureFlash: true,
+  passReqToCallback: true
 }))
 
 const nodemailer = require('nodemailer')
@@ -51,6 +51,7 @@ let transporter = nodemailer.createTransport({
 //POST : This one add the data taken from the form to the DATABASE 
 
 router.post('/signup', (req, res) => {
+  const username = req.body.username
   const email = req.body.email
   const password = req.body.password
 
@@ -58,15 +59,33 @@ router.post('/signup', (req, res) => {
   const tokenArr = Array.from({ length: 6 }, () => Math.floor(Math.random() * 10))
   const token = tokenArr.join(''); // 6 digits
 
-  transporter.sendMail({
-    from: '"The cat app " <myawesome@project.com>',
-    to: email,
-    subject: 'Email varification token',
-    text: `Hey, thanks for joining the cat app! Click the link to confirm your mail adress: http://localhost:3000/verify-email-link/${token}`,
-    html: `Hey, thanks for joining the cat app! Click the link to confirm your mail adress: http://localhost:3000/verify-email-link/${token}`
 
+  User.findOne({ username })
+  .then(user => {
+    if (user !== null) {
+      req.flash('error','username already exists')
+      res.redirect('/signin'); // the username already exists
+      throw new Error('username already exists');
+    }
+    return User.findOne({ email })
   })
-    .then(() => {
+  .then((u) => {
+    if (u !== null) {
+      console.log("Email exists")
+      req.flash('error','username already exists')
+      res.redirect('/signin'); // the e-mail already exists
+      throw new Error('email already exists');
+    }
+    return transporter.sendMail({
+      from: '"The cat app " <myawesome@project.com>',
+      to: email,
+      subject: 'Email varification token',
+      text: `Hey, thanks for joining the cat app! Click the link to confirm your mail adress: http://localhost:3000/verify-email-link/${token}`,
+      html: `Hey, thanks for joining the cat app! Click the link to confirm your mail adress: http://localhost:3000/verify-email-link/${token}`
+  
+    })
+  })
+  .then(() => {
       const salt = bcrypt.genSaltSync(bcryptSalt);
       const hashPass = bcrypt.hashSync(req.body.password, salt);
 
@@ -131,6 +150,12 @@ router.get(
     ]
   })
 );
+
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/signin');
+});
+
 
 
 

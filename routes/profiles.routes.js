@@ -59,7 +59,7 @@ router.get('/viewprofile', ensureLogin.ensureLoggedIn(), (req, res) => {
 
 router.post('/addcat', ensureLogin.ensureLoggedIn() ,uploadCloud.single('my-photo'), (req, res) => {
   const imageURL = req.file.url;
-  console.log("this is the url"+imageURL)
+  console.log("this is the url" + imageURL)
   Cat.create({ name: req.body.name, description: req.body.description, imgUrl: imageURL, owner: req.user.id }).then(() => {
     res.redirect('/profile/viewprofile')
   })

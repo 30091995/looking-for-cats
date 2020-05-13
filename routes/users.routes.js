@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const flash = require('connect-flash');
+
 // Require user model
 
 const User = require('../models/User.model')
@@ -21,7 +23,7 @@ router.get('/private-page', ensureLogin.ensureLoggedIn(), (req, res) => {
 //GET : This one render the form to add the data for sign up and log in !
 
 router.get('/signin', (req, res) => {
-  res.render('users/signin', {loggedIn: req.sessionID})//, flashMessages: req.flash('error')})
+  res.render('users/signin', {loggedIn: req.sessionID, message : req.flash('error')})//, flashMessages: req.flash('error')})
 })
 
 
@@ -72,7 +74,7 @@ router.post('/signup', (req, res) => {
   .then((u) => {
     if (u !== null) {
       console.log("Email exists")
-      req.flash('error','username already exists')
+      req.flash('error','email already exists')
       res.redirect('/signin'); // the e-mail already exists
       throw new Error('email already exists');
     }

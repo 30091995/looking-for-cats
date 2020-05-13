@@ -11,6 +11,7 @@ const ensureLogin = require('connect-ensure-login');
 
 router.get('/filteringcats/:id', ensureLogin.ensureLoggedIn(), (req, res) => {
   axios.get('https://api.thecatapi.com/v1/images/search?breed_ids=' + req.params.id).then((cat) => {
+    console.log(cat.data[0].breeds[0])
     res.render('cats/catdetails', {cat : cat.data[0].breeds[0] , pic : cat.data[0] , loggedIn: req.sessionID })
   })
 })

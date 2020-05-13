@@ -51,8 +51,7 @@ router.get('/viewprofile', ensureLogin.ensureLoggedIn(), (req, res) => {
   Promise.all([dbCatPromise, ...promises]).then((fetchedCats) => {
     let myCats = fetchedCats.shift()
     let cats = fetchedCats.map((c) => c.data)
-    console.log(req.user.verifiedEmail)
-    res.render('profiles/viewprofile', { myCats, cats, emailVarification: req.user.verifiedEmail, loggedIn: req.sessionID })
+    res.render('profiles/viewprofile', { myCats, cats, emailVarification: req.user.verifiedEmail, loggedIn: req.sessionID , googleID : req.user.googleID})
   })
 
 

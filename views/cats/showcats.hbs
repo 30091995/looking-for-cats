@@ -1,12 +1,19 @@
 
-  <h2>You could be interested to one of this: </h2>
-  <div class="container">
-    <div class="row row-cols-4">
-      {{#each cats}}
-       <div class="col">
-        <h5>{{this.name}}</h5>
-        <a href="filteringcats/{{this.id}}">See more specifics</a>
-       </div>
-      {{/each}}
-    </div>
+  <div class="pagetitle"><i class="fas fa-cat fa-6x"></i><h1>These cats below might fit your style.</h1>
+  <p>Browse and read all about them.</p>
   </div>
+<div class="searchresults" >
+
+      {{#each cats}}
+              <a href="filteringcats/{{this.id}}">
+      <div class="catresultbox">
+ 
+       
+        <h2>{{this.name}}</h2>
+       See more specifics
+       
+ </div>
+</a>
+
+      {{/each}}
+ </div>

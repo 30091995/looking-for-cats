@@ -20,7 +20,7 @@ const User = require('./models/User.model')
 
 
 mongoose
-  .connect('mongodb://localhost/looking-for-cats', {useNewUrlParser: true, useUnifiedTopology: true})
+  .connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })

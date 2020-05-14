@@ -5,10 +5,22 @@
 	box-sizing: border-box;
 }
 
+.boxcollectionfilter {
+border: solid;
+
+display: inline-flex;
+flex-direction: row;
+	}
+
+
+
+
 .navbar {
 	background-color: #C5C9A4;
 	padding: 20px;  
 	border-radius: 10px;
+	box-shadow: 0 5px 8px rgba(0,0,0,0.25), 
+	0 10px 10px rgba(0,0,0,0.22);
 }
 
 
@@ -19,9 +31,15 @@ font-size: 17px;
 
 }
 
+
+
 body {
 	background-color: #7EB09B;
 	font-family: 'Montserrat', sans-serif;
+}
+.mainpageheader {
+	font-size: 80px;
+	font-weight: bold;
 }
 
 .signin {
@@ -54,7 +72,7 @@ a {
 	margin: 15px 0;
 }
 
-button {
+.container button {
 	border-radius: 50px;
 	border: 1px solid #FF4B2B;
 	background-color: #FF4B2B;
@@ -80,14 +98,14 @@ button.ghost {
 	border-color: #FFFFFF;
 }
 
-form {
+.signin form {
 	background-color: #FFFFFF;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
 	padding: 0 50px;
-	height: 100%;
+	// height: 100%;
 	text-align: center;
 }
 
@@ -96,7 +114,19 @@ input {
 	border: none;
 	padding: 12px 15px;
 	margin: 8px 0;
-	width: 100%;
+	// width: 100%;
+}
+
+button {
+	border-radius: 50px;
+	background-color: #FF4B2B;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	// transition: transform 80ms ease-in;
 }
 
 .container {
@@ -235,9 +265,7 @@ input {
 	width: 40px;
 }
 
-.introduction {
 
-}
 
 .block {
 	padding: 200px 60px 100px 60px; 
@@ -247,13 +275,11 @@ input {
 .boxcollection {
 	display: flex; 
 justify-content: center;
-flex-wrap: wrap;
+flex-wrap: nowrap;
 }
 
 
-
 .boxcollection form {
-
 	align-items: flex-start;
 flex-flow: column wrap;
 flex-direction: row;
@@ -329,31 +355,6 @@ padding: 20px;
 	}
 
 
-
-// footer {
-//     background-color: #222;
-//     color: #fff;
-//     font-size: 14px;
-//     bottom: 0;
-//     position: fixed;
-//     left: 0;
-//     right: 0;
-//     text-align: center;
-//     z-index: 999;
-// }
-
-// footer p {
-//     margin: 10px 0;
-// }
-
-// footer i {
-//     color: red;
-// }
-
-// footer a {
-//     color: #3c97bf;
-//     text-decoration: none;
-// }
 .select-css {
 	display: block;
 	font-size: 16px;
@@ -428,16 +429,25 @@ padding: 20px;
 .searchresults {
 	display: flex;
 	flex-wrap: wrap;
+
 }
 
-.catresultbox {
+.searchresultssecond {
+	display: flex;
+	flex-direction: row;
+flex-wrap: wrap;
+}
+
+
+.breedresultbox {
+
 	flex-flow: column wrap;
 	display: flexbox;
 	flex-direction: row;
 	margin: 40px 50px 40px 50px; 
 	border-radius: 10px;
 	text-align: center;
-	min-height: 180px;
+	// min-height: 180px;
 	max-width: 180px;
 	background-color: rgba(255, 255, 255, 0.849);
 	border-radius: 10px;
@@ -446,7 +456,78 @@ padding: 20px;
 	padding: 20px; 
 	}
 
+	.catresultbox {
+
+		flex-flow: column wrap;
+		display: flexbox;
+		flex-direction: row;
+		margin: 40px 50px 40px 50px; 
+		border-radius: 10px;
+		text-align: center;
+		min-height: 180px;
+
+		background-color: rgba(255, 255, 255, 0.849);
+		border-radius: 10px;
+			box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+				0 10px 10px rgba(0,0,0,0.22);
+		padding: 20px; 
+	}
+
+	.catdetailresultbox {
+		flex-flow: column wrap;
+		display: flexbox;
+		margin: 40px 50px 40px 50px; 
+		border-radius: 10px;
+		text-align: left;
+		min-height: 180px;
+		background-color: rgba(255, 255, 255, 0.849);
+		border-radius: 10px;
+			box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+				0 10px 10px rgba(0,0,0,0.22);
+		padding: 20px; 
+	}
+
+
+
 	.pagetitle {
+
+		display: flex;
+		padding: 10px;
 		margin-top: 40px;
 		background-color: #476A6F;
+		min-height: 250px;
+		color: white;
+		border-radius: 10px;
+		flex-direction: column-reverse;
+
+	}
+
+	.pagetitle h2 {
+font-size: 70px;
+text-shadow: 2px 2px 4px #000000;
+	}
+
+	.uploader {
+		background-color: rgba(255, 255, 255, 0.438);
+		box-shadow: 0 5px 8px rgba(0,0,0,0.25), 
+	0 10px 10px rgba(0,0,0,0.22);
+	border-radius: 10px;
+	padding: 10px;
+	}
+
+	.uploader input {
+		border-radius: 10px;
+		padding: 20px;
+		min-width: 400px;
+	}
+
+	.errormessage {
+		border-radius: 50px;
+		background-color: rgba(255, 75, 43, 0.692);
+		color: #FFFFFF;
+		font-size: 12px;
+		padding: 12px 45px;
+		letter-spacing: 1px;
+width: 350px;
+height: 250px;
 	}

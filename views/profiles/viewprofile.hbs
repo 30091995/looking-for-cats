@@ -1,41 +1,41 @@
 
+  <div class="pagetitle">
   <h2>
-
-    Welcome to your Profile
+{{this.name}}'s profile
   </h2>
+  </div>
+   {{#if this.googleID}}
+  {{else}}
+  {{#if this.emailVarification}} 
+  {{else}}
+   Please make sure to varify your email with the link we sent you. 
+  {{/if}}
+  {{/if}} 
+  <h1>Your favorite breeds so far:</h1>
+   <div class="searchresults">
 
-
-
-
-
-  <section>
-
-  <h4>
-    These are your favourite cats:
-  </h4>
-<div class="searchresults">
   {{#each cats}}
   <div class="catresultbox">
-    <h1>{{this.0.breeds.0.name}}</h1>
-    <br>
+    <h2>{{this.0.breeds.0.name}}</h2>
+
     <img src="{{this.0.url}}" width="300" height="300">
     <form action="/profile/removefavourite/{{this.0.breeds.0.id}}" method="POST">
     <button type="submit">Remove from favourite</button>
     </form>
-  </div>
+</div>
   {{/each}}
+   </div>
   </div>
-  </section>
+ 
 
 
-
-
+<div class="uploader">
 
   <section>
-    <h4>List of your own cats:</h4>
+    <h2>Your own uploads:</h2>
     {{#each myCats}}
     
-    <div class="searchresults">
+    <div class="catresultbox">
       <h1>{{this.name}}</h1>
       <br>
       <p>{{this.description}}</p>
@@ -49,18 +49,12 @@
 
   <section>
     <h4>Do you have cats and you want to tell us more about them?</h4>
-    <form action="/profile/addcat" method="POST" enctype="multipart/form-data">
-    <input type="text" name="name" placeholder="Name of your cat">
-    <input type="text" name="description" placeholder="Description of your cat" width="100" height="70">
-    <input type="file" name="my-photo" id="">
+    <form action="/profile/addcat" method="POST" enctype="multipart/form-data"> <br>
+    <input type="text" name="name" placeholder="Name of your cat"> <br>
+    <input type="text" name="description" placeholder="Description of your cat" width="100" height="70"> <br>
+    <input type="file" name="my-photo" id=""> <br>
     <button type="submit">Upload your cat</button>
     </form>
   </section>
-  {{#if this.googleID}}
-  {{else}}
-  {{#if this.emailVarification}} 
-  {{else}}
-   Please make sure to varify your email with the link we sent you. 
-  {{/if}}
-  {{/if}}
-  
+ 
+</div>

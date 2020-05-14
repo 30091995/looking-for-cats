@@ -13,9 +13,9 @@
   <h4>
     These are your favourite cats:
   </h4>
-
+<div class="searchresults">
   {{#each cats}}
-  <div>
+  <div class="catresultbox">
     <h1>{{this.0.breeds.0.name}}</h1>
     <br>
     <img src="{{this.0.url}}" width="300" height="300">
@@ -24,6 +24,7 @@
     </form>
   </div>
   {{/each}}
+  </div>
   </section>
 
 
@@ -33,7 +34,8 @@
   <section>
     <h4>List of your own cats:</h4>
     {{#each myCats}}
-    <div>
+    
+    <div class="searchresults">
       <h1>{{this.name}}</h1>
       <br>
       <p>{{this.description}}</p>

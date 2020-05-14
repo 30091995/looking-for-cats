@@ -82,8 +82,8 @@ router.post('/signup', (req, res) => {
       from: '"The cat app " <myawesome@project.com>',
       to: email,
       subject: 'Email varification token',
-      text: `Hey, thanks for joining the cat app! Click the link to confirm your mail adress: http://localhost:3000/verify-email-link/${token}`,
-      html: `Hey, thanks for joining the cat app! Click the link to confirm your mail adress: http://localhost:3000/verify-email-link/${token}`
+      text: `Hey, thanks for joining the cat app! Click the link to confirm your mail adress: ${process.env.EMAIL_LINK}/${token}`,
+      html: `Hey, thanks for joining the cat app! Click the link to confirm your mail adress: ${process.env.EMAIL_LINK}/${token}`
   
     })
   })

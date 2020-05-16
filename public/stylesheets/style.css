@@ -3,9 +3,9 @@
   box-sizing: border-box; }
 
 .boxcollectionfilter {
-  border: solid;
-  display: inline-flex;
-  flex-direction: row; }
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap; }
 
 .navbar {
   background-color: #C5C9A4;
@@ -351,7 +351,7 @@ button {
   flex-wrap: wrap; }
 
 .searchresultssecond {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   flex-wrap: wrap; }
 

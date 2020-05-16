@@ -6,11 +6,11 @@
 }
 
 .boxcollectionfilter {
-border: solid;
-
-display: inline-flex;
+display: flex;
 flex-direction: row;
+flex-wrap: nowrap;
 	}
+
 
 
 
@@ -431,9 +431,13 @@ padding: 20px;
 	flex-wrap: wrap;
 
 }
+.searchresultsfilter {
+
+
+}
 
 .searchresultssecond {
-	display: flex;
+	display: inline-flex;
 	flex-direction: row;
 flex-wrap: wrap;
 }

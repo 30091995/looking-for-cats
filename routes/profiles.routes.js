@@ -55,12 +55,12 @@ router.get('/viewprofile', ensureLogin.ensureLoggedIn(), (req, res) => {
   })
 
 
+
 })
 
-router.post('/addcat', ensureLogin.ensureLoggedIn() ,uploadCloud.single('my-photo'), (req, res) => {
+router.post('/addcat',uploadCloud.single('my-photo'), (req, res) => {
   const imageURL = req.file.url;
-  console.log("this is the url" + imageURL)
-  Cat.create({ name: req.body.name, description: req.body.description, imgUrl: imageURL, owner: req.user.id }).then(() => {
+  Cat.create({ name: req.body.name, description: req.body.description, imgUrl: imageURL, owner: req.user.id }).then((cat) => {
     res.redirect('/profile/viewprofile')
   })
 })

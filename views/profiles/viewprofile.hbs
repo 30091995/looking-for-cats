@@ -1,9 +1,14 @@
 
   <div class="pagetitle">
+  {{#if this.googleID}}
+  <h2>Welcome to your profile</h2>
+  {{else}}
   <h2>
-{{this.name}}'s profile
+  {{this.name}}'s profile
   </h2>
+  {{/if}}
   </div>
+  
    {{#if this.googleID}}
   {{else}}
   {{#if this.emailVarification}} 

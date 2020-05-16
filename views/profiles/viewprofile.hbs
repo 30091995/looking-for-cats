@@ -1,12 +1,12 @@
 
   <div class="pagetitle">
-  {{#if this.googleID}}
-  <h2>Welcome to your profile</h2>
-  {{else}}
-  <h2>
-  {{this.name}}'s profile
-  </h2>
-  {{/if}}
+    {{#if this.googleID}}
+    <h2>Welcome to your profile</h2>
+    {{else}}
+    <h2>
+    {{this.name}}'s profile
+    </h2>
+    {{/if}}
   </div>
   
    {{#if this.googleID}}
@@ -48,6 +48,7 @@
       <img src="{{this.imgUrl}}" alt="cat-picture">
       <form action="/profile/removemycat/{{this.id}}" method="POST">
       <button type="submit">Remove from your own collection</button>
+      </form>
     </div>
     {{/each}}
   </section>

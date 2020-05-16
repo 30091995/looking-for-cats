@@ -4,8 +4,7 @@
 
 .boxcollectionfilter {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap; }
+  flex-wrap: wrap; }
 
 .navbar {
   background-color: #C5C9A4;

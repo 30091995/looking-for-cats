@@ -39,14 +39,15 @@ router.post('/login', passport.authenticate('local', {
 const nodemailer = require('nodemailer')
 
 // SMTP 
-let transporter = nodemailer.createTransport({
-  service: 'Gmail',
+let smtpTransport = require('nodemailer-smtp-transport');
+
+let transporter = nodemailer.createTransport(smtpTransport({
+  service: "gmail",
   auth: {
-    host: 'smtp.gmail.com',
-    user: process.env.GMAIL_MAIL,
-    pass: process.env.GMAIL_PASSWORD
+    user: "francescosaccone95@gmail.com",
+    pass: "lupo.alberto95"
   }
-});
+}));
 
 
 
